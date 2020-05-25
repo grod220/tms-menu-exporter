@@ -1,6 +1,12 @@
 import { MultiLanguageText } from './index';
 
-type ContextType = 'MENU' | 'ITEM' | 'MODIFIER_GROUP' | number; // number diverts from docs
+type ContextType =
+  | 'MENU'
+  | 'ITEM'
+  | 'MODIFIER_GROUP'
+  // diverts from docs
+  | 'CUSTOMIZATION'
+  | number;
 
 interface PriceOverride {
   context_type: ContextType;
