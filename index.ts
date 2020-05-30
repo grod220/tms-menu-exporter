@@ -1,4 +1,4 @@
-const contentful =  require('contentful');
+const contentful = require('contentful');
 
 const client = contentful.createClient({
   space: '8fhpgddd51q7', // Menu space
@@ -6,8 +6,14 @@ const client = contentful.createClient({
 });
 
 const main = async () => {
-  const entry = await client.getEntry('4gUwc20r867a4aHOwfGscN');
-  console.log(entry);
+  try {
+    const categories = await client.getEntries({
+      content_type: 'category',
+    });
+    const test = 1;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 main();
