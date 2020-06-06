@@ -8,8 +8,11 @@ import { ModifierGroup } from './@types/uber-eats/modifier-group';
 import { AllContentfulData } from './contentful-transforms';
 
 const convertToUberMenus = (contentfulMenus: IMenuVersion[]): Menu[] => {
-  contentfulMenus = [contentfulMenus[0]]; // TODO: support all menu versions
-  return contentfulMenus.map((menu) => ({
+  const MENU_SORT_ORDER = ['Meat', 'Vegetarian', 'Vegan', 'Gluten Free'];
+  const menuComparator = (a: IMenuVersion, b: IMenuVersion): number => {
+    return MENU_SORT_ORDER.indexOf(a.fields.type) - MENU_SORT_ORDER.indexOf(b.fields.type);
+  };
+  return contentfulMenus.sort(menuComparator).map((menu) => ({
     id: menu.sys.id,
     title: {
       translations: {
@@ -26,7 +29,7 @@ const convertToUberCategories = (contentfulCategories: ICategory[]): Category[] 
     id: category.sys.id,
     title: {
       translations: {
-        en: category.fields.title,
+        en: category.fields.title.split('#').shift().trim(),
       },
     },
     entities: category.fields.menuItems.map((menuItem) => ({
