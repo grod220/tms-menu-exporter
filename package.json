@@ -9,6 +9,7 @@
     "contentful-typescript-codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "contentful": "^7.14.4",
     "contentful-management": "^5.26.6",
     "typescript": "^3.9.3"

@@ -8,11 +8,12 @@ import { ModifierGroup } from './@types/uber-eats/modifier-group';
 import { AllContentfulData } from './contentful-transforms';
 
 const convertToUberMenus = (contentfulMenus: IMenuVersion[]): Menu[] => {
+  contentfulMenus = [contentfulMenus[0]]; // TODO: support all menu versions
   return contentfulMenus.map((menu) => ({
     id: menu.sys.id,
     title: {
       translations: {
-        en: menu.sys.type,
+        en: menu.fields.type,
       },
     },
     service_availability: SERVICE_AVAILABILITIES,
@@ -25,7 +26,7 @@ const convertToUberCategories = (contentfulCategories: ICategory[]): Category[] 
     id: category.sys.id,
     title: {
       translations: {
-        en: category.sys.type,
+        en: category.fields.title,
       },
     },
     entities: category.fields.menuItems.map((menuItem) => ({
@@ -40,7 +41,7 @@ const convertToUberItems = (contentfulItems: (IDish | IOptionItem)[]): Item[] =>
     id: item.sys.id,
     title: {
       translations: {
-        en: item.sys.type,
+        en: item.fields.title,
       },
     },
     description: {
@@ -63,7 +64,7 @@ const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[
     id: modifier.sys.id,
     title: {
       translations: {
-        en: modifier.sys.type,
+        en: modifier.fields.title,
       },
     },
     quantity_info: {
@@ -72,10 +73,12 @@ const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[
         max_permitted: modifier.fields.maximum,
       },
     },
-    modifier_options: [...modifier.fields.optionItem, ...modifier.fields.pricedOptionItems].map((item) => ({
-      id: item.sys.id,
-      type: 'MODIFIER_GROUP',
-    })),
+    modifier_options: [...(modifier.fields.optionItem || []), ...(modifier.fields.pricedOptionItems || [])].map(
+      (item) => ({
+        id: item.sys.id,
+        type: 'MODIFIER_GROUP',
+      }),
+    ),
   }));
 };
 
