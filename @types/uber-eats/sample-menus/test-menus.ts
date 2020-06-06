@@ -149,7 +149,7 @@ const B: EntireMenu = {
   modifier_groups: [],
 };
 
-const C: EntireMenu = {
+export const C: EntireMenu = {
   items: [
     {
       description: {

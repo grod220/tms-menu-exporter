@@ -36,27 +36,45 @@ const convertToUberCategories = (contentfulCategories: ICategory[]): Category[] 
   }));
 };
 
-const convertToUberItems = (contentfulItems: (IDish | IOptionItem)[]): Item[] => {
-  return contentfulItems.map((item) => ({
-    id: item.sys.id,
-    title: {
-      translations: {
-        en: item.fields.title,
+const convertToUberItems = (
+  contentfulItems: (IDish | IOptionItem)[],
+  freeModifierGroups: ItemsToFreeModifiers,
+): Item[] => {
+  return contentfulItems.map((item) => {
+    const itemObj: Item = {
+      id: item.sys.id,
+      title: {
+        translations: {
+          en: item.fields.title,
+        },
       },
-    },
-    description: {
-      translations: {
-        en: item.fields.description,
+      description: {
+        translations: {
+          en: item.fields.description,
+        },
       },
-    },
-    price_info: {
-      price: item.fields.price * 100,
-      overrides: [],
-    },
-    tax_info: {
-      tax_rate: 7,
-    },
-  }));
+      price_info: {
+        price: item.fields.price * 100,
+        overrides: freeModifierGroups[item.sys.id]
+          ? freeModifierGroups[item.sys.id].map((id) => ({
+              context_type: 'MODIFIER_GROUP',
+              context_value: id,
+              price: 0,
+            }))
+          : [],
+      },
+      tax_info: {
+        tax_rate: 7,
+      },
+    };
+    if ('options' in item.fields) {
+      itemObj.modifier_group_ids = {
+        ids: item.fields.options.map((option) => option.sys.id),
+        overrides: [],
+      };
+    }
+    return itemObj;
+  });
 };
 
 const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[] => {
@@ -64,7 +82,7 @@ const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[
     id: modifier.sys.id,
     title: {
       translations: {
-        en: modifier.fields.title,
+        en: modifier.fields.title.split('#').shift().trim(),
       },
     },
     quantity_info: {
@@ -73,7 +91,7 @@ const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[
         max_permitted: modifier.fields.maximum,
       },
     },
-    modifier_options: [...(modifier.fields.optionItem || []), ...(modifier.fields.pricedOptionItems || [])].map(
+    modifier_options: [...(modifier.fields.freeOptionItem || []), ...(modifier.fields.pricedOptionItems || [])].map(
       (item) => ({
         id: item.sys.id,
         type: 'MODIFIER_GROUP',
@@ -82,11 +100,33 @@ const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[
   }));
 };
 
+type ItemsToFreeModifiers = Record<string, string[]>;
+
+const getFreeModifierGroupIds = (allOptions: IOptions[]): ItemsToFreeModifiers => {
+  const toReturn = {};
+  allOptions
+    .filter((option) => option.fields.freeOptionItem)
+    .forEach((option) => {
+      option.fields.freeOptionItem.forEach((optionItem) => {
+        if (!toReturn[optionItem.sys.id]) {
+          toReturn[optionItem.sys.id] = [];
+        }
+        toReturn[optionItem.sys.id].push(option.sys.id);
+      });
+    });
+  return toReturn;
+};
+
 export const convertToUberEntireMenu = (allContentfulData: AllContentfulData): EntireMenu => {
+  const freeModifierGroups = getFreeModifierGroupIds(allContentfulData.allOptions);
+
   return {
     menus: convertToUberMenus(allContentfulData.allMenuVersions),
     categories: convertToUberCategories(allContentfulData.allCategories),
-    items: convertToUberItems([...allContentfulData.allMenuItems, ...allContentfulData.allOptionItems]),
+    items: convertToUberItems(
+      [...allContentfulData.allMenuItems, ...allContentfulData.allOptionItems],
+      freeModifierGroups,
+    ),
     modifier_groups: convertToUberModifiers(allContentfulData.allOptions),
     display_options: {
       disable_item_instructions: true,

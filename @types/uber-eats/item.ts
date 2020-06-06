@@ -57,7 +57,8 @@ interface SuspensionRules {
 interface ModifierGroupsOverride {
   context_type: ContextType;
   context_value: string;
-  ids: string[];
+  price?: number;
+  ids?: string[];
 }
 
 interface ModifierGroupsRules {

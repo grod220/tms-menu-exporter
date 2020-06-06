@@ -131,7 +131,7 @@ export interface IOptionsFields {
   minimum?: number | undefined;
 
   /** free option items */
-  optionItem?: (IDish | IOptionItem)[] | undefined;
+  freeOptionItem?: (IDish | IOptionItem)[] | undefined;
 
   /** priced option items */
   pricedOptionItems?: (IDish | IOptionItem)[] | undefined;
