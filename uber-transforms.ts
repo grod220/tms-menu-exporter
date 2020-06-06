@@ -79,6 +79,9 @@ const convertToUberItems = (
         overrides: [],
       };
     }
+    if ('submitImageToUber' in item.fields && item.fields.submitImageToUber) {
+      itemObj.image_url = `https:${item.fields.image.fields.file.url}`;
+    }
     return itemObj;
   });
 };
