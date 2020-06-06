@@ -1,15 +1,10 @@
-const contentful = require('contentful');
-
-const client = contentful.createClient({
-  space: '8fhpgddd51q7', // Menu space
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
+import { convertToUberEntireMenu } from './uber-transforms';
+import { getAllContentfulData } from './contentful-transforms';
 
 const main = async () => {
   try {
-    const categories = await client.getEntries({
-      content_type: 'category',
-    });
+    const allContentfulData = await getAllContentfulData();
+    const entireUberMenu = convertToUberEntireMenu(allContentfulData);
     const test = 1;
   } catch (e) {
     console.log(e);

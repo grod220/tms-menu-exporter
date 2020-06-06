@@ -1,11 +1,11 @@
 import { MultiLanguageText } from './index';
 
-interface TimePeriod {
+export interface TimePeriod {
   start_time: string;
   end_time: string;
 }
 
-interface ServiceAvailability {
+export interface ServiceAvailability {
   day_of_week: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
   time_periods: TimePeriod[];
 }
