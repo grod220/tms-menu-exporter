@@ -3,7 +3,7 @@ import { ICategory, IDish, IMenuVersion, IOptionItem, IOptions } from './@types/
 import { SERVICE_AVAILABILITIES } from './menu-constants';
 import { EntireMenu } from './@types/uber-eats';
 import { Category } from './@types/uber-eats/category';
-import { Item } from './@types/uber-eats/item';
+import { Item, TemperatureLabel } from './@types/uber-eats/item';
 import { ModifierGroup } from './@types/uber-eats/modifier-group';
 import { AllContentfulData } from './contentful-transforms';
 
@@ -45,7 +45,7 @@ const convertToUberItems = (
       id: item.sys.id,
       title: {
         translations: {
-          en: item.fields.title,
+          en: item.fields.title.split('#').shift().trim(),
         },
       },
       description: {
@@ -65,6 +65,12 @@ const convertToUberItems = (
       },
       tax_info: {
         tax_rate: 7,
+      },
+      tax_label_info: {
+        default_value: {
+          labels: [`TEMP_${item.fields.temperature[0].toUpperCase()}` as TemperatureLabel],
+          source: 'MANUAL',
+        },
       },
     };
     if ('options' in item.fields) {

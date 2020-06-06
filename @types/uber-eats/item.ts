@@ -130,7 +130,7 @@ type CategoryLabel =
   | 'TRAIT_CARB'
   | 'CAT_PREPARED_DRINK';
 
-type TemperatureLabel = 'TEMP_HEATED' | 'TEMP_UNHEATED' | 'TEMP_COLD';
+export type TemperatureLabel = 'TEMP_HEATED' | 'TEMP_UNHEATED' | 'TEMP_COLD';
 
 interface TaxLabelsRuleSet {
   default_value: {
