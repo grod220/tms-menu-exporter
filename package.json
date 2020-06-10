@@ -12,9 +12,11 @@
     "axios": "^0.19.2",
     "contentful": "^7.14.4",
     "contentful-management": "^5.26.6",
+    "lodash": "^4.17.15",
     "typescript": "^3.9.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.155",
     "@types/node": "^14.0.5",
     "contentful-typescript-codegen": "^3.2.1",
     "prettier": "^2.0.5",

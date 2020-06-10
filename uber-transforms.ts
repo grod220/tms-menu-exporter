@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { Menu } from './@types/uber-eats/menu';
 import { ICategory, IDish, IMenuVersion, IOptionItem, IOptions } from './@types/contentful';
 import { SERVICE_AVAILABILITIES } from './menu-constants';
@@ -7,8 +9,17 @@ import { Item, TemperatureLabel } from './@types/uber-eats/item';
 import { ModifierGroup } from './@types/uber-eats/modifier-group';
 import { AllContentfulData } from './contentful-transforms';
 
+const removeHashes = (str: string): string => str.split('#').shift().trim();
+
 const convertToUberMenus = (contentfulMenus: IMenuVersion[]): Menu[] => {
-  const MENU_SORT_ORDER = ['Meat', 'Vegetarian', 'Vegan', 'Gluten Free'];
+  const MENU_SORT_ORDER = [
+    'Full menu',
+    'Vegetarian',
+    'Vegan',
+    'Gluten Free #meat',
+    'Gluten Free #vegan',
+    'Catering Menu',
+  ];
   const menuComparator = (a: IMenuVersion, b: IMenuVersion): number => {
     return MENU_SORT_ORDER.indexOf(a.fields.type) - MENU_SORT_ORDER.indexOf(b.fields.type);
   };
@@ -28,9 +39,7 @@ const convertToUberCategories = (contentfulCategories: ICategory[]): Category[] 
   return contentfulCategories.map((category) => ({
     id: category.sys.id,
     title: {
-      translations: {
-        en: category.fields.title.split('#').shift().trim(),
-      },
+      translations: { en: removeHashes(category.fields.title) },
     },
     entities: category.fields.menuItems.map((menuItem) => ({
       id: menuItem.sys.id,
@@ -48,7 +57,7 @@ const convertToUberItems = (
       id: item.sys.id,
       title: {
         translations: {
-          en: item.fields.title.split('#').shift().trim(),
+          en: removeHashes(item.fields.title),
         },
       },
       description: {
@@ -71,10 +80,13 @@ const convertToUberItems = (
       },
       tax_label_info: {
         default_value: {
-          labels: [`TEMP_${item.fields.temperature[0].toUpperCase()}` as TemperatureLabel],
+          labels: [
+            `TEMP_${item.fields.temperature ? item.fields.temperature[0].toUpperCase() : 'HEATED'}` as TemperatureLabel,
+          ],
           source: 'MANUAL',
         },
       },
+      external_data: item.fields.title.match('#.+') ? item.fields.title.match('#.+')[0] : '',
     };
     if ('options' in item.fields) {
       itemObj.modifier_group_ids = {
@@ -94,7 +106,7 @@ const convertToUberModifiers = (contentfulModifiers: IOptions[]): ModifierGroup[
     id: modifier.sys.id,
     title: {
       translations: {
-        en: modifier.fields.title.split('#').shift().trim(),
+        en: removeHashes(modifier.fields.title),
       },
     },
     quantity_info: {
@@ -144,4 +156,15 @@ export const convertToUberEntireMenu = (allContentfulData: AllContentfulData): E
       disable_item_instructions: true,
     },
   };
+};
+
+export const onlyMenus = (entireMenu: EntireMenu, filterOnly: string[]) => {
+  const filtered = _.cloneDeep(entireMenu);
+  filtered.menus = filtered.menus
+    .filter((menu) => filterOnly.includes(menu.title.translations.en))
+    .map((menu) => {
+      menu.title.translations.en = removeHashes(menu.title.translations.en);
+      return menu;
+    });
+  return filtered;
 };

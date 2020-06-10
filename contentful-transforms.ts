@@ -19,6 +19,7 @@ const retrieve = async <ContentfulType>(content_type: string) => {
     await client.getEntries({
       content_type,
       include: 10,
+      limit: 500,
     })
   ).items as ContentfulType[];
 };
