@@ -12,7 +12,7 @@
     "axios": "^0.19.2",
     "contentful": "^7.14.4",
     "contentful-management": "^5.26.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "typescript": "^3.9.3"
   },
   "devDependencies": {
