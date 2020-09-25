@@ -5,7 +5,7 @@ export const SERVICE_AVAILABILITIES: ServiceAvailability[] = [
     day_of_week: 'monday',
     time_periods: [
       {
-        start_time: '11:00',
+        start_time: '15:00',
         end_time: '21:00',
       },
     ],
@@ -14,7 +14,7 @@ export const SERVICE_AVAILABILITIES: ServiceAvailability[] = [
     day_of_week: 'tuesday',
     time_periods: [
       {
-        start_time: '11:00',
+        start_time: '15:00',
         end_time: '21:00',
       },
     ],
@@ -23,7 +23,7 @@ export const SERVICE_AVAILABILITIES: ServiceAvailability[] = [
     day_of_week: 'wednesday',
     time_periods: [
       {
-        start_time: '11:00',
+        start_time: '15:00',
         end_time: '21:00',
       },
     ],
@@ -56,69 +56,3 @@ export const SERVICE_AVAILABILITIES: ServiceAvailability[] = [
     ],
   },
 ];
-//
-// export const SERVICE_AVAILABILITIES: ServiceAvailability[] = [
-//   {
-//     day_of_week: 'monday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-//   {
-//     day_of_week: 'tuesday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-//   {
-//     day_of_week: 'wednesday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-//   {
-//     day_of_week: 'thursday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-//   {
-//     day_of_week: 'friday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-//   {
-//     day_of_week: 'saturday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-//   {
-//     day_of_week: 'sunday',
-//     time_periods: [
-//       {
-//         start_time: '00:00',
-//         end_time: '21:00',
-//       },
-//     ],
-//   },
-// ];
