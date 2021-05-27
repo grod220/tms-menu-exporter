@@ -23,7 +23,7 @@ export const SERVICE_AVAILABILITIES: ServiceAvailability[] = [
     day_of_week: 'wednesday',
     time_periods: [
       {
-        start_time: '15:00',
+        start_time: '11:00',
         end_time: '21:00',
       },
     ],

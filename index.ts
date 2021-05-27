@@ -12,12 +12,12 @@ const main = async () => {
     const allContentfulData = await getAllContentfulData();
     const entireUberMenu = convertToUberEntireMenu(allContentfulData);
 
-    const testResult = await updateUberEatsMenu(
-      TEST_EATS_STORE_ID,
-      TEST_EATS_STORE_TOKEN,
-      onlyMenus(entireUberMenu, ['Full menu', 'Vegetarian', 'Vegan', 'Gluten Free #meat']),
-    );
-    console.log(testResult.status, testResult.statusText);
+    // const testResult = await updateUberEatsMenu(
+    //   TEST_EATS_STORE_ID,
+    //   TEST_EATS_STORE_TOKEN,
+    //   onlyMenus(entireUberMenu, ['Full menu', 'Vegetarian', 'Vegan', 'Gluten Free #meat']),
+    // );
+    // console.log(testResult.status, testResult.statusText);
 
     const tmsResult = await updateUberEatsMenu(
       TMS_STORE_ID,
@@ -29,7 +29,7 @@ const main = async () => {
     const primoVeganResult = await updateUberEatsMenu(
       PRIMO_VEGAN_STORE_ID,
       PROD_EATS_STORE_TOKEN,
-      onlyMenus(entireUberMenu, ['Vegetarian', 'Vegan']),
+      onlyMenus(entireUberMenu, ['Vegan']),
     );
     console.log(primoVeganResult.status, primoVeganResult.statusText);
   } catch (e) {
