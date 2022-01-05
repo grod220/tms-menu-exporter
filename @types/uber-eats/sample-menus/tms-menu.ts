@@ -2706,8 +2706,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Pasta tossed with our housemade 3 cheese mix, roasted tomato sauce topped with mozzarella. Served with Stoppe salad and focaccia.',
+          en: 'Pasta tossed with our housemade 3 cheese mix, roasted tomato sauce topped with mozzarella. Served with Stoppe salad and focaccia.',
         },
       },
       price_info: {
@@ -3135,8 +3134,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Breaded eggplant, mozzarella, peppers, onions, arugula, and pesto mayo on a ciabatta roll. Served with Stoppe salad.',
+          en: 'Breaded eggplant, mozzarella, peppers, onions, arugula, and pesto mayo on a ciabatta roll. Served with Stoppe salad.',
         },
       },
       price_info: {
@@ -5291,8 +5289,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Breaded eggplant stacked with 3 chesses, baked in roasted tomato sauce, topped with mozzarella penne or linguine. Served with Stoppe Salad and Focaccia.',
+          en: 'Breaded eggplant stacked with 3 chesses, baked in roasted tomato sauce, topped with mozzarella penne or linguine. Served with Stoppe Salad and Focaccia.',
         },
       },
       price_info: {
@@ -5718,8 +5715,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Linguine tossed with garlic, olive oil, red pepper flakes, a hint of anchovy, and fresh basil. Served with Stoppe salad and focaccia.',
+          en: 'Linguine tossed with garlic, olive oil, red pepper flakes, a hint of anchovy, and fresh basil. Served with Stoppe salad and focaccia.',
         },
       },
       price_info: {
@@ -6164,8 +6160,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            '2 Meatballs on ciabatta topped with a polenta ball, mozzarella, and a fried egg. Served with Stoppe Salad.',
+          en: '2 Meatballs on ciabatta topped with a polenta ball, mozzarella, and a fried egg. Served with Stoppe Salad.',
         },
       },
       price_info: {
@@ -6210,8 +6205,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Breaded eggplant stacked with imported cheeses and roasted tomato sauce. Served with stoppe salad and focaccia. ',
+          en: 'Breaded eggplant stacked with imported cheeses and roasted tomato sauce. Served with stoppe salad and focaccia. ',
         },
       },
       image_url: 'https://d1ralsognjng37.cloudfront.net/26efbc85-460c-412b-b930-05c02aa5b7fc',
@@ -6460,8 +6454,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Fresh mozzarella, cherry tomatoes tossed in our signature pesto sauce over a bed of greens. Served with Focaccia.',
+          en: 'Fresh mozzarella, cherry tomatoes tossed in our signature pesto sauce over a bed of greens. Served with Focaccia.',
         },
       },
       price_info: {
@@ -6627,8 +6620,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Farro, chickpeas, tomatoes, red onion, olives, arugula, tossed with our house-made red wine vinaigrette topped with feta. Served with Foccacia Bread.',
+          en: 'Farro, chickpeas, tomatoes, red onion, olives, arugula, tossed with our house-made red wine vinaigrette topped with feta. Served with Foccacia Bread.',
         },
       },
       price_info: {
@@ -6991,8 +6983,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Penne or linguine tossed with seasonal vegetables in a light garlic sauce. Served with Stopped Salad and Focaccia.',
+          en: 'Penne or linguine tossed with seasonal vegetables in a light garlic sauce. Served with Stopped Salad and Focaccia.',
         },
       },
       image_url: 'https://d1ralsognjng37.cloudfront.net/7ee94f34-943b-4851-8be9-be90a86533fa.jpeg',
@@ -7361,8 +7352,7 @@ const TMS_MENU: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Garden fresh arugula, romaine, cherry tomatoes, red onions, roasted corn, feta cheese, with our house-made red wine vinaigrette. Served with focaccia bread.',
+          en: 'Garden fresh arugula, romaine, cherry tomatoes, red onions, roasted corn, feta cheese, with our house-made red wine vinaigrette. Served with focaccia bread.',
         },
       },
       price_info: {

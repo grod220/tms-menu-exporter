@@ -558,8 +558,7 @@ const primoVegan: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Linguine simmered with white canneline beans, fresh herbs, and bold Italian flavors. Served with stopped salad and focaccia.',
+          en: 'Linguine simmered with white canneline beans, fresh herbs, and bold Italian flavors. Served with stopped salad and focaccia.',
         },
       },
       image_url: '',
@@ -829,8 +828,7 @@ const primoVegan: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Farro chick peas, tomatoes, red onions, olives, and arugula tossed with our homemade red wine vinaigrette.',
+          en: 'Farro chick peas, tomatoes, red onions, olives, and arugula tossed with our homemade red wine vinaigrette.',
         },
       },
       image_url: '',
@@ -1778,8 +1776,7 @@ const primoVegan: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Garden fresh arugula, Romaine, cherry tomatoes, red onions, and roasted corn with our housemade red wine vinaigrette.',
+          en: 'Garden fresh arugula, Romaine, cherry tomatoes, red onions, and roasted corn with our housemade red wine vinaigrette.',
         },
       },
       image_url: '',
@@ -1910,8 +1907,7 @@ const primoVegan: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Linguine tossed with garlic olive oil, red pepper flakes, and fresh basil. Served with stopped salad and focaccia.',
+          en: 'Linguine tossed with garlic olive oil, red pepper flakes, and fresh basil. Served with stopped salad and focaccia.',
         },
       },
       image_url: '',
@@ -2297,8 +2293,7 @@ const primoVegan: EntireMenu = {
       },
       description: {
         translations: {
-          en:
-            'Breaded eggplant, stuffed with veggies, and topped with roasted tomato sauce. Served with stopped salad and focaccia.',
+          en: 'Breaded eggplant, stuffed with veggies, and topped with roasted tomato sauce. Served with stopped salad and focaccia.',
         },
       },
       image_url: '',
