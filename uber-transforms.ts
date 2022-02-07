@@ -66,7 +66,7 @@ const convertToUberItems = (
         },
       },
       price_info: {
-        price: item.fields.price * 100,
+        price: Math.floor(item.fields.price * 100),
         overrides: freeModifierGroups[item.sys.id]
           ? freeModifierGroups[item.sys.id].map((id) => ({
               context_type: 'MODIFIER_GROUP',
