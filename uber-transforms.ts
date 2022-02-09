@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import produce from 'immer';
 
 import { Menu } from './@types/uber-eats/menu';
 import { ICategory, IDish, IMenuVersion, IOptionItem, IOptions } from './@types/contentful';
@@ -144,13 +145,17 @@ const getFreeModifierGroupIds = (allOptions: IOptions[]): ItemsToFreeModifiers =
 export const convertToUberEntireMenu = (allContentfulData: AllContentfulData): EntireMenu => {
   const freeModifierGroups = getFreeModifierGroupIds(allContentfulData.allOptions);
 
+  /* Due to packaging costs, Uber dish prices are $1 more expensive vs pickup orders */
+  const menuItemsWithSurcharge = allContentfulData.allMenuItems.map((i) =>
+    produce(i, (item) => {
+      item.fields.price = item.fields.price + 1;
+    }),
+  );
+
   return {
     menus: convertToUberMenus(allContentfulData.allMenuVersions),
     categories: convertToUberCategories(allContentfulData.allCategories),
-    items: convertToUberItems(
-      [...allContentfulData.allMenuItems, ...allContentfulData.allOptionItems],
-      freeModifierGroups,
-    ),
+    items: convertToUberItems([...menuItemsWithSurcharge, ...allContentfulData.allOptionItems], freeModifierGroups),
     modifier_groups: convertToUberModifiers(allContentfulData.allOptions),
     display_options: {
       disable_item_instructions: true,
