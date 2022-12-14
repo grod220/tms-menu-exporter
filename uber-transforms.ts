@@ -95,7 +95,7 @@ const convertToUberItems = (
         overrides: [],
       };
     }
-    if ('submitImageToUber' in item.fields && item.fields.submitImageToUber) {
+    if ('image' in item.fields) {
       itemObj.image_url = `https:${item.fields.image.fields.file.url}`;
     }
     return itemObj;
